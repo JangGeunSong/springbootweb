@@ -5,6 +5,7 @@
     
 <mapper namespace="com.example.demo.member.service.mapper.MemberMapper">
         
+    <!-- Select member infomation from database to client UI -->
     <select id="selectMemberList" parameterType="com.example.demo.member.service.MemberVO" resultType="com.example.demo.member.service.MemberVO">
         SELECT * FROM webboard.member
     </select>

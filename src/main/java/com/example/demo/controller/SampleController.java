@@ -18,9 +18,9 @@ public class SampleController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@RequestMapping("/")
+	@RequestMapping("/usrdata")
 	@ResponseBody
-	public String home() throws Exception {
+	public List<MemberVO> home() throws Exception {
 		List<MemberVO> list = memberMapper.selectMemberList();
 		
 		for(int i = 0; i < list.size(); i++) {
@@ -28,6 +28,6 @@ public class SampleController {
 			System.out.println("team : " + list.get(i).getTeam());
 		}
 		
-		return "Hello Maven Mysql myBatis default setting";
+		return list;
 	}
 }

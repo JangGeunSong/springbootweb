@@ -7,12 +7,12 @@
         
     <!-- Article select from data base table -->
     <select id="selectAtricleList" parameterType="com.example.demo.article.service.ArticleVO" resultType="com.example.demo.article.service.ArticleVO">
-        SELECT * FROM webboard.article
+        SELECT * FROM webboard.tb_board
     </select>
 
-    <!-- Insert Article infomation from client side UI to database -->
+    <!-- Insert Article infomation from client side UI to database
     <insert id="createAtricle">
 
-    </insert>
+    </insert> -->
     
 </mapper>

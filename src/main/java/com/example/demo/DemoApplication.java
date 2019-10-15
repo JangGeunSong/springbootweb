@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @SpringBootApplication
-@MapperScan(value = "com.example.demo.member.service.mapper")
+@MapperScan({"com.example.demo.member.service.mapper", "com.example.demo.article.service.mapper"})
 public class DemoApplication {
 
 	public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class DemoApplication {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		
-		Resource res = new PathMatchingResourcePatternResolver().getResource("classpath:mapper/MemberMapper.xml");
+		Resource res = new PathMatchingResourcePatternResolver().getResource("classpath:mapper/ArticleMapper.xml");
 		sessionFactory.setMapperLocations(res);
 		
 		return sessionFactory.getObject();

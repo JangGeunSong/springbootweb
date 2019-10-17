@@ -6,8 +6,13 @@
 <mapper namespace="com.example.demo.member.service.mapper.MemberMapper">
         
     <!-- Select member infomation from database to client UI -->
-    <!-- <select id="selectMemberList" parameterType="com.example.demo.member.service.MemberVO" resultType="com.example.demo.member.service.MemberVO">
+    <select id="selectMemberList" parameterType="com.example.demo.member.service.MemberVO" resultType="com.example.demo.member.service.MemberVO">
         SELECT * FROM webboard.member
-    </select> -->
+    </select>
     
+    <insert id="createMember">
+        insert into webboard.tb_member(email, password, name, address, tel) 
+        value (#(email), #(password), #(name), #(address), #(tel))
+    </insert>
+
 </mapper>

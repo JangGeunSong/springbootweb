@@ -1,27 +1,40 @@
 package com.example.demo.member.service;
 
 public class MemberVO {
-	private String code = "";
+    private String email = "";
+    private String password = "";
     private String name = "";
-    private String team = "";
+    private String address = "";
+    private String tel = "";
     
-    public String getCode() {
-        return code;
+    public String getEmail() {
+        return this.email;
     }
-    public void setCode(String code) {
-        this.code = code;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getPassword() {
+        return this.password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public String getName() {
-        return name;
+        return this.name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public String getTeam() {
-        return team;
+    public String getAddress() {
+        return this.address;
     }
-    public void setTeam(String team) {
-        this.team = team;
+    public void setAddress(String address) {
+        this.address = address;
     }    
-    
+    public String getTel() {
+        return this.tel;
+    }
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }

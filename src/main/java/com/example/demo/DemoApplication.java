@@ -24,7 +24,8 @@ public class DemoApplication {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		
-		Resource res = new PathMatchingResourcePatternResolver().getResource("classpath:mapper/ArticleMapper.xml");
+		Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*Mapper.xml");
+		// If Resources are more than 1, then call the array for call the multiple resources.
 		sessionFactory.setMapperLocations(res);
 		
 		return sessionFactory.getObject();

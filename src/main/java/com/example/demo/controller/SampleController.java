@@ -2,20 +2,21 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import com.example.demo.article.service.ArticleVO;
+import com.example.demo.article.service.mapper.ArticleMapper;
+import com.example.demo.member.service.MemberVO;
+import com.example.demo.member.service.mapper.MemberMapper;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.example.demo.member.service.MemberVO;
-import com.example.demo.member.service.mapper.MemberMapper;
-import com.example.demo.article.service.ArticleVO;
-import com.example.demo.article.service.mapper.ArticleMapper;
 
 @Controller
 @EnableAutoConfiguration
@@ -34,18 +35,20 @@ public class SampleController {
 		return list;
 	}
 
-	@RequestMapping(value = "/usrdata", method = RequestMethod.POST)
+	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	@ResponseBody
-	public String createMember(MemberVO memberVO, Model map) throws Exception {
-		// member create logic
+	public String createMember(@ModelAttribute MemberVO member, Model model) {
+		
+		model.addAttribute("result", member);
 
-		System.out.println(memberVO);
+		memberMapper.createMember(member);
 
-		logger.debug("Test form: { }", memberVO);
+		logger.debug("USR data : {}", member);
 
-		return "index";
+		return "form";
 	}
 
+	// This article mapper will be CRUD page's article contents.
 	@Autowired
 	private ArticleMapper articleMapper;
 

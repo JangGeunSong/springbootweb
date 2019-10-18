@@ -12,7 +12,7 @@
     
     <insert id="createMember">
         insert into webboard.tb_member(email, password, name, address, tel) 
-        value (#(email), #(password), #(name), #(address), #(tel))
+        value (#{email}, #{password}, #{name}, #{address}, #{tel})
     </insert>
 
 </mapper>

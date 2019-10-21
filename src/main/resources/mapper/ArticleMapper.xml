@@ -10,9 +10,10 @@
         SELECT * FROM webboard.tb_board
     </select>
 
-    <!-- Insert Article infomation from client side UI to database
+    <!-- Insert Article infomation from client side UI to database -->
     <insert id="createAtricle">
-
-    </insert> -->
+        insert into webboard.tb_board(title, contents, hit_cnt, del_gb, crea_id) 
+        value (#{title}, #{contents}, 0, "N", #{crea_id})
+    </insert>
     
 </mapper>

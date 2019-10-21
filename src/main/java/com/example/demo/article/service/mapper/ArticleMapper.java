@@ -11,6 +11,6 @@ public interface ArticleMapper {
 
     public List<ArticleVO> selectAtricleList() throws Exception;
 
-    public void createArticle(String title, String contents, String CREA_ID) throws Exception;
+    public void createArticle(ArticleVO article) throws Exception;
 
 }

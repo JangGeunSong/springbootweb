@@ -26,7 +26,7 @@
             </div>
         </nav>
         <div class="container">
-            <form action="/form" th:action="@{/form}" th:object="${member}" method="post"> <!-- This is must be change the action uri -->
+            <form action="/form" th:action="@{/form}" th:object="${member}" method="post">
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="text" class="form-control" th:field="*{email}" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">

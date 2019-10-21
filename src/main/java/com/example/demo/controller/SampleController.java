@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @EnableAutoConfiguration
@@ -36,16 +37,17 @@ public class SampleController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	@ResponseBody
-	public String createMember(@ModelAttribute MemberVO member, Model model) {
-		
+	public ModelAndView createMember(@ModelAttribute MemberVO member, Model model) {
+		ModelAndView mv = new ModelAndView();
 		model.addAttribute("result", member);
 
-		memberMapper.createMember(member);
+		// memberMapper.createMember(member);
 
 		logger.debug("USR data : {}", member);
 
-		return "form";
+		mv.setViewName("redirect:index.html");
+		// Redirect to the index.html page
+		return mv;
 	}
 
 	// This article mapper will be CRUD page's article contents.
@@ -61,9 +63,15 @@ public class SampleController {
 	}
 
 	@RequestMapping(value = "/article", method = RequestMethod.POST)
-	@ResponseBody
-	public void createArticle(Object articleInfo) throws Exception {
+	public ModelAndView createArticle(@ModelAttribute ArticleVO article, Model model) throws Exception {
 		// Input article infomation to the database and create articles
+		ModelAndView mv = new ModelAndView();
+
+		articleMapper.createArticle(article);
+
+		mv.setViewName("redirect:index.html");
+		// Redirect to the index.html page
+		return mv;
 	}
 
 }

@@ -11,6 +11,6 @@ public interface MemberMapper {
 	
 	public List<MemberVO> selectMemberList() throws Exception;
 
-	public MemberVO createMember(MemberVO member);
+	public void createMember(MemberVO member);
 	
 }

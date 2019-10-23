@@ -10,9 +10,25 @@
         SELECT * FROM webboard.member
     </select>
     
+    <!-- Create member infomation to database for new user -->
     <insert id="createMember">
         insert into webboard.tb_member(email, password, name, address, tel) 
         value (#{email}, #{password}, #{name}, #{address}, #{tel})
     </insert>
+
+    <!-- Update member infomation from client side UI to database -->
+    <update id="updateArticle">
+        update webboard.tb_member set
+            password = #{password}
+            name = #{name}
+            address = #{address}
+            tel = #{tel}
+        where email = #{email}
+    </update>
+    
+    <!-- delete member infomation from client side UI to database -->
+    <delete id="deleteArticle">
+        delete from webboard.tb_member where email = #{email}
+    </update>
 
 </mapper>

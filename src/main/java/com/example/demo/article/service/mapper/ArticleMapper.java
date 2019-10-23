@@ -13,4 +13,8 @@ public interface ArticleMapper {
 
     public void createArticle(ArticleVO article) throws Exception;
 
+    public void deleteArticle(int ArticleId) throws Exception;
+
+    public void updateArticle(int ArticleId ,ArticleVO aritcle) throws Exception;
+
 }

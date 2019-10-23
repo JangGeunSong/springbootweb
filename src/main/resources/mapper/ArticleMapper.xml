@@ -15,5 +15,18 @@
         insert into webboard.tb_board(title, contents, hit_cnt, del_gb, crea_id) 
         value (#{title}, #{contents}, 0, "N", #{crea_id})
     </insert>
+
+    <!-- Update article from client side UI to database -->
+    <update id="updateArticle">
+        update webboard.tb_board set
+            title = #{title}
+            contents = #{contents}
+        where IDX = #{IDX}
+    </update>
     
+    <!-- delete article from client side UI to database -->
+    <delete id="deleteArticle">
+        delete from webboard.tb_board where IDX = #{IDX}
+    </update>
+
 </mapper>

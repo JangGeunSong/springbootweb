@@ -37,7 +37,7 @@ public class SampleController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public ModelAndView createMember(@ModelAttribute MemberVO member, Model model) {
+	public ModelAndView createMember(@ModelAttribute MemberVO member, Model model) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		model.addAttribute("result", member);
 
@@ -47,6 +47,28 @@ public class SampleController {
 
 		mv.setViewName("redirect:index.html");
 		// Redirect to the index.html page
+		return mv;
+	}
+
+	@RequestMapping(value = "/form", method = RequestMethod.DELETE)
+	public ModelAndView deleteMember(@ModelAttribute MemberVO member, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		memberMapper.deleteMember(member.getEmail());
+
+		mv.setViewName("redirect:index.html");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/formupdate", method = RequestMethod.POST)
+	public ModelAndView updateMember(@ModelAttribute MemberVO member, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		memberMapper.updateMember(member.getEmail(), member);
+
+		mv.setViewName("redirect:index.html");
+
 		return mv;
 	}
 
@@ -71,6 +93,28 @@ public class SampleController {
 
 		mv.setViewName("redirect:index.html");
 		// Redirect to the index.html page
+		return mv;
+	}
+
+	@RequestMapping(value = "/article", method = RequestMethod.DELETE)
+	public ModelAndView deleteArticle(@ModelAttribute ArticleVO article, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		articleMapper.deleteArticle(article.getIDX());
+
+		mv.setViewName("redirect:index.html");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/articleupdate", method = RequestMethod.POST)
+	public ModelAndView updateArticle(@ModelAttribute ArticleVO article, Model model) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		articleMapper.updateArticle(article.getIDX(), article);
+
+		mv.setViewName("redirect:index.html");
+
 		return mv;
 	}
 
